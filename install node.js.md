@@ -22,13 +22,13 @@
 
 编译：
 在操作系统终端下，运行如下命令：将下面例子中的?替换成最新的Node.js的版本号
-> $ curl -o http://nodejs.org/dist/node-v?.?.?.tar.gz
-> $ tar -xzvf node-v?.?.?.tar.gz
-> $ cd node-v?.?.?
-> $ ./configure
-> $ make
-> $ make test
-> $ make install
+>$ curl -o http://nodejs.org/dist/node-v?.?.?.tar.gz
+$ tar -xzvf node-v?.?.?.tar.gz
+$ cd node-v?.?.?
+$ ./configure
+$ make
+$ make test
+$ make install
 
 如果 `make test` 命令报错，建议停止安装，将 `./configure`、`make`以及`make test`命令产生的日志信息发送给Node.js的邮件列表
 
@@ -79,8 +79,8 @@ NPM本身就用Node.js开发的，有二进制包的发布形式（Window下有M
 通过NPM安装`colors`模块，新建一个`index.js`文件：
 
 > $ npm init -y // 当前目录生成 package.json 配置文件
-> $ npm install colors -S  // 安装模块到开发依赖
-> $ touch index.js
+$ npm install colors -S  // 安装模块到开发依赖
+$ touch index.js
 
 模块是否安装成功，可以查看当前目录下是否有node_modules/colors目录。
 
@@ -105,7 +105,7 @@ console.log('hello node! '.rainbow);
 
 将项目中 `node_modules` 目录删除，修改 `package.json` 文件
 > $ rm -r node_modules
-> $ vim package.json
+$ vim package.json
 
 然后修改该文件为：
 ```
@@ -134,10 +134,10 @@ console.log('hello node! '.rainbow);
 }
 ```
 > $ npm install
-> node index // 注意了，这里文件名不需要加上 '.js' 后缀
+node index // 注意了，这里文件名不需要加上 '.js' 后缀
 
 自定义模块是内部使用的，如果想发布出去，NPM提供了如下方式，可以很方便地发布模块：
 > $ npm publish
-> $ hello node!
+$ hello node!
 
 ### 安装二进制工具包
