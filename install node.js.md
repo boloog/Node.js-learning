@@ -22,13 +22,15 @@
 
 编译：
 在操作系统终端下，运行如下命令：将下面例子中的?替换成最新的Node.js的版本号
->$ curl -o http://nodejs.org/dist/node-v?.?.?.tar.gz
+```
+$ curl -o http://nodejs.org/dist/node-v?.?.?.tar.gz
 $ tar -xzvf node-v?.?.?.tar.gz
 $ cd node-v?.?.?
 $ ./configure
 $ make
 $ make test
 $ make install
+```
 
 如果 `make test` 命令报错，建议停止安装，将 `./configure`、`make`以及`make test`命令产生的日志信息发送给Node.js的邮件列表
 
@@ -78,9 +80,11 @@ NPM本身就用Node.js开发的，有二进制包的发布形式（Window下有M
 ### 安装模块
 通过NPM安装`colors`模块，新建一个`index.js`文件：
 
-> $ npm init -y // 当前目录生成 package.json 配置文件
+```
+$ npm init -y // 当前目录生成 package.json 配置文件
 $ npm install colors -S  // 安装模块到开发依赖
 $ touch index.js
+```
 
 模块是否安装成功，可以查看当前目录下是否有node_modules/colors目录。
 
@@ -104,8 +108,10 @@ console.log('hello node! '.rainbow);
 - 分享更简单，因为有 `package.json` 文件，通过 `npm publish` 就可以将其发布到 NPM库中，供所有人下载使用了。
 
 将项目中 `node_modules` 目录删除，修改 `package.json` 文件
-> $ rm -r node_modules
+```
+$ rm -r node_modules
 $ vim package.json
+```
 
 然后修改该文件为：
 ```
@@ -133,11 +139,68 @@ $ vim package.json
   }
 }
 ```
-> $ npm install
+```
+$ npm install
 node index // 注意了，这里文件名不需要加上 '.js' 后缀
+```
 
 自定义模块是内部使用的，如果想发布出去，NPM提供了如下方式，可以很方便地发布模块：
-> $ npm publish
+```
+$ npm publish
 $ hello node!
+```
 
 ### 安装二进制工具包
+项目分发的是Node编写的命令行工具。安装时需要增加 `-g` 标志。
+例： Web框架`express`就包含一个用于创建项目的可执行工具。
+> $ npm install -g express
+
+安装好后，新建一个目录，并在该目录运行 `express` 命令:
+```
+$ mkdir my-test
+$ cd my-test
+$ express
+```
+提示：当前运行会报错 `command not found: express`
+解决方法： `npm install -g express-generator`  [http://expressjs.com/en/starter/generator.html](http://expressjs.com/en/starter/generator.html)
+运行结果:
+```
+  warning: the default view engine will not be jade in future releases
+  warning: use `--view=jade' or `--help' for additional options
+
+   create : .
+   create : ./package.json
+   create : ./app.js
+   create : ./public
+   create : ./routes
+   create : ./routes/index.js
+   create : ./routes/users.js
+   create : ./views
+   create : ./views/index.jade
+   create : ./views/layout.jade
+   create : ./views/error.jade
+   create : ./bin
+   create : ./bin/www
+   create : ./public/javascripts
+   create : ./public/images
+   create : ./public/stylesheets
+   create : ./public/stylesheets/style.css
+
+   install dependencies:
+     $ cd . && npm install
+
+   run the app:
+     $ DEBUG=my-test:* npm start
+
+```
+
+### 浏览NPM仓库
+关于模块系统的内容，就能编写出可以使用的Node生态系统中任意类型模块的程序了。
+NPM有很多模块，有两个命令在仓库用来搜索和查看模块：search和view
+> npm search node
+> npm view socket.io
+
+小结：
+- 安装Node.js + NPM的环境
+- 使用node和npm命令，如何依赖模块
+- 载入模块和系统API，使用Node.js中的一个重要关键词 `require`
