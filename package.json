@@ -6,9 +6,12 @@
   "author": "boloog <373840427@qq.com>",
   "license": "MIT",
   "scripts": {
+    "test": "./node_modules/mocha/bin/mocha ",
     "start": "./node_modules/.bin/nodemon index.js"
   },
   "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
     "request": "^2.87.0"
   },
   "devDependencies": {
