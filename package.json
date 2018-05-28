@@ -1,11 +1,17 @@
 {
-  "name": "Node.js-learning",
+  "name": "Node.js",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:boloog/Node.js-learning.git",
   "author": "boloog <373840427@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon index.js"
+  },
   "dependencies": {
     "request": "^2.87.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }

@@ -1,6 +1,6 @@
 const greeting = require('./src/greeting')
 
-console.log( greeting.hello )
+console.log( greeting.hello() )
 
 // const request = require('request')
 
