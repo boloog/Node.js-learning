@@ -16,6 +16,7 @@
     "sinon": "^5.0.10"
   },
   "devDependencies": {
+    "gulp": "^3.0.0",
     "nodemon": "^1.17.5"
   }
 }

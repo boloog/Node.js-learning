@@ -14,7 +14,10 @@ describe('BoloogDemo', function(){
   it('测试使用 Sinon Spy', function() {
     sinon.spy(demo, 'logMessage')
     demo.send('hello')
-    console.log(demo.logMessage);
+    // console.log(demo.logMessage);
+
+    expect(demo.logMessage.calledOnce).to.be.true
+     
     
   })
 
