@@ -12,7 +12,8 @@
   "dependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
-    "request": "^2.87.0"
+    "request": "^2.87.0",
+    "sinon": "^5.0.10"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"
