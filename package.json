@@ -1,5 +1,5 @@
 {
-  "name": "Node.js",
+  "name": "node-express",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:boloog/Node.js-learning.git",
@@ -7,13 +7,22 @@
   "license": "MIT",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha ",
-    "start": "./node_modules/.bin/nodemon index.js"
+    "start": "./node_modules/.bin/nodemon index.js",
+    "express": "./node_modules/.bin/nodemon --exec babel-node express.js"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.18.3",
     "chai": "^4.1.2",
+    "ejs": "^2.6.1",
+    "express": "5.0.0-alpha.6",
     "mocha": "^5.2.0",
+    "morgan": "^1.9.0",
     "request": "^2.87.0",
-    "sinon": "^5.0.10"
+    "sinon": "^5.0.10",
+    "yarn": "1.7.0"
   },
   "devDependencies": {
     "gulp": "^3.0.0",
