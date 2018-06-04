@@ -19,4 +19,8 @@
 
 - 安装 [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) 或者 `Mongoose` 
 
-- 安装 
+## test
+- 创建`config/database.js` `db.js` 运行 `node db.js` 端口正确就连接成功。
+
+
+## 数据模型 
