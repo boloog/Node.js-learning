@@ -1,7 +1,7 @@
 // const db = require('./config/database')
 
 
-const Event = require('./models/event')
+const Event = require('../models/event')
 
 const event1 = new Event({
   title: 'Mongodb 数据库练习'
