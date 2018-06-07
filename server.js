@@ -4,6 +4,7 @@
 
 const express = require('express')
 const eventRouter = require('./routes/eventRouter')
+const userRouter = require('./routes/userRouter')
 const app = express()
 const port = process.env.PORT || 3000
 const bodyParser = require('body-parser') // body json数据
@@ -12,7 +13,7 @@ app.use(bodyParser.json())
 
 
 // http://localhost:3000/api/events  {"message":"hello events ~"}
-app.use('/api', eventRouter)
+app.use('/api', [eventRouter, userRouter])
 
 app.get('/', (request, response) => {
   response.send('hello ~')
