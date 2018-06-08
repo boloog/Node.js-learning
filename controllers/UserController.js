@@ -33,7 +33,7 @@ const auth = (request, response) => {
           if( result){
             // 签发 token
             const payload = {
-              userName: user.username
+              userName: user.userName
             }
             // 密钥
             const secret = 'LONG'
