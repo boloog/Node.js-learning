@@ -22,8 +22,6 @@ app.post('/photos/upload', upload.array('photos', 3), (request, response, next) 
 // })
 
 
-
-
 app.listen(8080, () => {
   console.log(`监听端口：http://localhost:8080`)
 })
