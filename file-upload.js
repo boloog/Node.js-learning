@@ -5,6 +5,10 @@ const multer = require('multer')
 // 添加 loki数据库
 const loki = require('lokijs')
 
+// fs
+const fs = require('fs')
+
+
 const db = new loki('uploads/uploads.json', {
   persistenceMethod: 'fs'
 })
@@ -46,8 +50,20 @@ app.post('/profile', upload.single('avatar'), async (request, response, next) =>
   response.send(result)
 })
 // 处理多个文件上传  3个
-app.post('/photos/upload', upload.array('photos', 3), (request, response, next) => {
-  response.send(request.files)
+app.post('/photos/upload', upload.array('photos', 3), async (request, response, next) => {
+  const collection = await loadCollection('uploads', db)
+  const result = collection.insert(request.files)
+
+  db.saveDatabase()
+  response.send(result)
+})
+
+// 请求上传的资源 
+app.get('/uploads/:id', async (request, response) => {
+  const collection = await loadCollection('uploads', db)
+  const result = collection.get(request.params.id)
+  response.setHeader('Content-Type', result.mimetype)
+  fs.createReadStream(result.path).pipe(response)
 })
 
 // 返回状态
@@ -66,7 +82,7 @@ app.listen(8080, () => {
   console.log(`监听端口：http://localhost:8080`)
 })
 
-
+// postman 接口调用  返回数据。
 // http://localhost:8080/profile
 // {
 //   "avatar": 'T180.jpg'
