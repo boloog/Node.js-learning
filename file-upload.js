@@ -1,11 +1,26 @@
 const express = require('express')
 const app = express()
-
 // 处理表单
 const multer = require('multer')
+
+
+// 文件上传过滤器
+const fileFilter = (request, file, callback) => {
+  if(!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)){
+    return callback(new Error('images only :)'), false)
+  }
+  callback(null, true)
+}
+
+
+
 const upload = multer({
-  dest: 'uploads/'
+  dest: 'uploads/',
+  fileFilter
 })
+
+
+
 
 // 处理单个文件上传
 app.post('/profile', upload.single('avatar'), (request, response, next) => {
@@ -16,6 +31,12 @@ app.post('/photos/upload', upload.array('photos', 3), (request, response, next) 
   response.send(request.files)
 })
 
+// 返回状态
+app.use((error, request, next) => {
+  response.status(500).send({
+    message: error.message
+  })
+})
 // 上传任意文件 3个数量
 // app.post('/fields/upload', upload.fields([{ name: 'photos', maxCount: 3}]), (request, response, next) => {
 //   response.send(request.file)

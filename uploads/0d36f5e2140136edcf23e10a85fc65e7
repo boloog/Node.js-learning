@@ -1,0 +1,32 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : 192.168.10.239
+ Source Server Type    : MySQL
+ Source Server Version : 50715
+ Source Host           : 192.168.10.239:3306
+ Source Schema         : fgc
+
+ Target Server Type    : MySQL
+ Target Server Version : 50715
+ File Encoding         : 65001
+
+ Date: 06/11/2017 15:31:28
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for article_comment_like
+-- ----------------------------
+DROP TABLE IF EXISTS `article_comment_like`;
+CREATE TABLE `article_comment_like` (
+  `id` bigint(20) DEFAULT NULL,
+  `c_id` bigint(20) DEFAULT NULL COMMENT '评论id',
+  `u_id` bigint(20) DEFAULT NULL COMMENT '点赞用户id',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态：0已取消点赞，1已点赞',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+SET FOREIGN_KEY_CHECKS = 1;
