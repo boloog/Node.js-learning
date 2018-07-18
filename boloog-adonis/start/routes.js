@@ -16,3 +16,9 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+
+// 添加路由  http://127.0.0.1:3333/hello?name=boloog
+Route.get('/hello', ({ request }) => {
+  return `hello ~ ${ request.input('name') }`
+})
