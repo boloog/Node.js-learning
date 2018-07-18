@@ -19,6 +19,16 @@ Route.on('/').render('welcome')
 
 
 // 添加路由  http://127.0.0.1:3333/hello?name=boloog
-Route.get('/hello', ({ request }) => {
-  return `hello ~ ${ request.input('name') }`
-})
+// Route.get('/hello', ({ request }) => {
+//   return `hello ~ ${ request.input('name') }`
+// })
+
+
+// 添加控制器
+// adonis make:controller Hello
+
+// create  app/Controllers/Http/HelloController.js
+
+// 调用控制器 里面的 render 方法
+Route.get('/hello', 'HelloController.render' )
+
