@@ -13,6 +13,7 @@
 |
 */
 
+const Database = use('Database')
 const Route = use('Route')
 
 Route.on('/').render('welcome')
@@ -32,3 +33,7 @@ Route.on('/').render('welcome')
 // 调用控制器 里面的 render 方法
 Route.get('/hello', 'HelloController.render' )
 
+// 查看数据表里的所有数据
+Route.get('/posts', async () => {
+  return await Database.table('posts').select('*')
+})
