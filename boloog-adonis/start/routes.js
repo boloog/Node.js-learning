@@ -17,12 +17,21 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.get('/posts', () => 'List posts')
+Route.get('/posts', 'PostController.index')
 
-http://127.0.0.1:3333/posts/    post
+// http://127.0.0.1:3333/posts/    post
 Route.post('/posts', () => 'Post data')
 
 // http://127.0.0.1:3333/posts/10
 Route.get('/posts/:id', ({ params }) => {
   return `You're watching post ${ params.id }`
+})
+
+
+Route.patch('/posts/:id', ({ params }) => {
+  return `Post ${ params.id } has been updated`
+})
+
+Route.delete('/posts/:id', ({ params }) => {
+  return `Post ${ params.id } has been delete`
 })
