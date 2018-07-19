@@ -18,3 +18,5 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 
 Route.get('/posts', () => 'List posts')
+
+Route.post('/posts', () => 'Post data')
