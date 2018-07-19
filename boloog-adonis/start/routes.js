@@ -19,4 +19,10 @@ Route.on('/').render('welcome')
 
 Route.get('/posts', () => 'List posts')
 
+http://127.0.0.1:3333/posts/    post
 Route.post('/posts', () => 'Post data')
+
+// http://127.0.0.1:3333/posts/10
+Route.get('/posts/:id', ({ params }) => {
+  return `You're watching post ${ params.id }`
+})
