@@ -20,18 +20,17 @@ Route.on('/').render('welcome')
 Route.get('/posts', 'PostController.index')
 
 // http://127.0.0.1:3333/posts/    post
-Route.post('/posts', () => 'Post data')
+Route.post('/posts', 'PostController.store')
+
+Route.get('/posts/create', 'PostController.create')
 
 // http://127.0.0.1:3333/posts/10
-Route.get('/posts/:id', ({ params }) => {
-  return `You're watching post ${ params.id }`
-})
+Route.get('/posts/:id', 'PostController.show')
 
 
-Route.patch('/posts/:id', ({ params }) => {
-  return `Post ${ params.id } has been updated`
-})
+Route.patch('/posts/:id', 'PostController.update')
 
-Route.delete('/posts/:id', ({ params }) => {
-  return `Post ${ params.id } has been delete`
-})
+Route.delete('/posts/:id', 'PostController.destroy')
+
+
+Route.get('/posts/:id/edit', 'PostController.edit')
