@@ -22,6 +22,10 @@ Route.resource('/posts', 'PostController')
   .only(['index', 'show'])
   // .apiOnly()
 
+// 命名路由：Named routes   更换请求路由别名
+Route
+  .get('/users-a', () => 'List of users.')
+  .as('users.index')
 
 // 以上方法创建资源路由的简单方法
 //Route.get('/posts', 'PostController.index')
