@@ -21,11 +21,46 @@ Route.on('/').render('welcome')
 Route.resource('/posts', 'PostController')
   .only(['index', 'show'])
   // .apiOnly()
-
+ 
 // 命名路由：Named routes   更换请求路由别名
 Route
   .get('/users-a', () => 'List of users.')
   .as('users.index')
+
+
+// 路由格式：Route formats 
+// http://127.0.0.1:3333/users
+// http://127.0.0.1:3333/users.json
+Route
+  .get('/users', ({ request }) => {
+    switch (request.format()) {
+      case 'json':
+        return [
+          { name: 'boloog'},
+          { name: 'long'}
+        ]
+        break;
+    
+      default:
+        return `
+          - boloog
+          - long
+          `
+        break;
+    }
+  })
+  .formats(['json', 'html'], true)
+
+// 路由群组：Route groups  添加地址前缀 公用中间件 
+// http://127.0.0.1:3333/admin/users
+// http://127.0.0.1:3333/admin/posts
+  Route
+  .group(() => {
+    Route.get('users', () => 'Mangage users.')
+    Route.get('posts', () => 'Mangage posts.')
+  })
+  .prefix('amdin')
+
 
 // 以上方法创建资源路由的简单方法
 //Route.get('/posts', 'PostController.index')
