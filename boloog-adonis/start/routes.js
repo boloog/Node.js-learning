@@ -62,6 +62,13 @@ Route
   .prefix('amdin')
 
 
+// 单页面应用的路由  通配路由 
+// http://127.0.0.1:3333/packages
+// http://127.0.0.1:3333/welcome
+Route.any('*', ({ view }) => view.render('welcome'))
+
+
+
 // 以上方法创建资源路由的简单方法
 //Route.get('/posts', 'PostController.index')
 // http://127.0.0.1:3333/posts/    post
