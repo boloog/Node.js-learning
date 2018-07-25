@@ -16,3 +16,7 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+
+// 请求：Request
+Route.get('/posts', ({ request }) => request.get())
