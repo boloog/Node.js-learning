@@ -11,10 +11,11 @@ const Server = use('Server')
 | match.
 |
 */
+// EBADCSRFTOKEN: Invalid CSRF token  // Shield
 const globalMiddleware = [
   'Adonis/Middleware/BodyParser',
   'Adonis/Middleware/Session',
-  'Adonis/Middleware/Shield',
+  // 'Adonis/Middleware/Shield',
   'Adonis/Middleware/AuthInit'
 ]
 

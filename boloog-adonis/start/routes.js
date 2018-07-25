@@ -20,3 +20,30 @@ Route.on('/').render('welcome')
 
 // 请求：Request
 Route.get('/posts', ({ request }) => request.get())
+
+// 
+// Route.post('/posts', ({ request }) => request.post())
+
+
+// http://127.0.0.1:3333/posts?edit=home
+// json
+// {
+// 	"title": "苹果",
+// 	"color": "red",
+// 	"status": "publish"
+	
+// }
+
+// Route.post('/posts', ({ request }) => request.all())
+// http://127.0.0.1:3333/posts?edit=home
+// Route.post('/posts', ({ request }) => request.only(['title', 'color']))
+// {
+// 	"title": "苹果",
+// 	"color": "red"
+// }
+
+
+// Route.post('/posts', ({ request }) => request.except(['title', 'color']))
+
+Route.post('/posts', ({ request }) => request.input('status', 'js'))
+
