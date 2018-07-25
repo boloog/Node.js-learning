@@ -45,5 +45,12 @@ Route.get('/posts', ({ request }) => request.get())
 
 // Route.post('/posts', ({ request }) => request.except(['title', 'color']))
 
-Route.post('/posts', ({ request }) => request.input('status', 'js'))
+// Route.post('/posts', ({ request }) => request.input('status', 'js'))
 
+
+// 客户端 collect 可以把对象 变成 数组
+// Route.post('/posts', ({ request }) => request.only(['title', 'content']))
+Route.post('/posts', ({ request }) => request.collect(['title', 'content']))
+
+// Form 添加字段和值 
+// title[0] title[1]
