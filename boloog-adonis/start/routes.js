@@ -21,7 +21,7 @@ Route.on('/').render('welcome')
 // 请求：Request
 // Route.get('/posts', ({ request }) => request.get())
 
-// 
+//
 // Route.post('/posts', ({ request }) => request.post())
 
 
@@ -31,7 +31,7 @@ Route.on('/').render('welcome')
 // 	"title": "苹果",
 // 	"color": "red",
 // 	"status": "publish"
-	
+
 // }
 
 // Route.post('/posts', ({ request }) => request.all())
@@ -52,15 +52,24 @@ Route.on('/').render('welcome')
 // Route.post('/posts', ({ request }) => request.only(['title', 'content']))
 // Route.post('/posts', ({ request }) => request.collect(['title', 'content']))
 
-// Form 添加字段和值 
+// Form 添加字段和值
 // title[0] title[1]
 
 
 // Headers 头部信息设定
 // Route.get('/posts', ({ request }) => request.headers() )
 // 单一获取头部信息 header的方法
-Route.get('/posts', ({ request }) => request.header('user-agent') )
-// http://127.0.0.1:3333/posts get 
+// Route.get('/posts', ({ request }) => request.header('user-agent') )
+
+Route.get('/posts', ({ request, response }) => {
+	// response.header('Content-Type', 'text/plain')
+	response.type('text/plain')
+	return  '<h1>List of post</h1>'
+})
+
+
+
+// http://127.0.0.1:3333/posts get
 // 返回头部信息
 // {
 // 	"host": "127.0.0.1:3333",
