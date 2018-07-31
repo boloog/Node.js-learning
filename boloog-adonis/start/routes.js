@@ -61,12 +61,33 @@ Route.on('/').render('welcome')
 // 单一获取头部信息 header的方法
 // Route.get('/posts', ({ request }) => request.header('user-agent') )
 
+// Route.get('/posts', ({ request, response }) => {
+// 	// response.header('Content-Type', 'text/plain')
+// 	response.type('text/plain')
+// 	return  '<h1>List of post</h1>'
+// })
+
+// cookies 设置与获取
 Route.get('/posts', ({ request, response }) => {
-	// response.header('Content-Type', 'text/plain')
-	response.type('text/plain')
-	return  '<h1>List of post</h1>'
+	response.cookie('theme', 'boloog')
+	response.clearCookie('theme')
+	return  request.cookies('theme', 'morenzhi')
 })
 
+// return  request.headers()
+// {
+// 	"host": "127.0.0.1:3333",
+// 	"user-agent": "insomnia/6.0.1",
+// 	"cookie": "XSRF-TOKEN=7a9046039c87ed93b1f694357ec13289Ywell1%2BjiEj3su9fvVjk1lhgDkLa438hJoVfsQip81X7RqedCfPKKGMpWT2mxqyNiJ1sOiA9%2Fowb9kmTIaZY6%2BWOqkMsatqF5jdt3SyCS%2BZhD6lIA9NGUlzbgY5SZTwj; adonis-session=71eef377efe7da9fbd3468f17b370a45hG3v%2Fgtjz%2Faid5Yq7sN1bSUmGbZKP9FQb20lcdLRHXnh3UDG%2FaPdYmK64KFv6jil2KfERSQWgVDs7zP4lsDDWrRTPfVuZ%2BI32weyk1IxTvMuyp%2BiuXTVSADRKg9%2B4Nkk; adonis-session-values=91d2713d074409aa1501cee4e4c40b6bITCcSN7Wvqfp3TCZcNIlPlKfQD2%2BXkEWyNUh6oavW2w2PqBHiOtsg1PachI%2Br%2FNphALTSfjfuhWemBSnqDA5Zp04R2XxSFCtv90FFSxP9Z9Qd4YL2zvjG4XT7wzzVgBTZijm5bi6mSsOkybZww5tCd%2Bz42OV76w2OFQs4%2BC0RP8%3D",
+// 	"accept": "*/*"
+// }
+
+// return  request.cookies()
+// {
+// "pgv_pvid": null,
+// "adonis-session": "bd56f31e-fe88-4793-9834-995dbf02c3b1",
+// "adonis-session-values": "{\"csrf-secret\":{\"d\":\"WZOkBdKqonJdLyIsmJBq9HZV\",\"t\":\"String\"}}"
+// }
 
 
 // http://127.0.0.1:3333/posts get
