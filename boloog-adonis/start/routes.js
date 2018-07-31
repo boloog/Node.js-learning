@@ -68,11 +68,11 @@ Route.on('/').render('welcome')
 // })
 
 // cookies 设置与获取
-Route.get('/posts', ({ request, response }) => {
-	response.cookie('theme', 'boloog')
-	response.clearCookie('theme')
-	return  request.cookies('theme', 'morenzhi')
-})
+// Route.get('/posts', ({ request, response }) => {
+// 	response.cookie('theme', 'boloog')
+// 	response.clearCookie('theme')
+// 	return  request.cookies('theme', 'morenzhi')
+// })
 
 // return  request.headers()
 // {
@@ -110,3 +110,41 @@ Route.get('/posts', ({ request, response }) => {
 //   "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,pt;q=0.6,fr;q=0.5,la;q=0.4",
 //   "cookie": "pgv_pvid=7364055550; adonis-session=acfc8e2ee9fc81099ea0c7005fd883a4GyhqBPU0JhdmsCEl8j%2BCNBeJG3KXLRff%2FozBvupGXcRiH7MFu%2FEBytQHwRIEo6EnA5w7Ul7lQetPMZukvp%2F8UZ%2BPRB4YLJFhzTLWplKiRHWyfb1y30BjMgk%2Fg2JdOwDi; XSRF-TOKEN=bfc5c8ca608743c141e2b61436f68066GzaGpRVP2Nwy5rExOsmJ3NPn9ar4m5fDlPd4Ct%2B8dVO0OA6LuI6ZBu5iQ1NHNsjE27I9%2FC6OsLf3juPUwlDh53JVA%2BWgAzv9cq3mm%2B7wo1LVordUcf8k7uYeZRXIGmCS; adonis-session-values=2f866ac30b9cf2019b09ad8f8f8e9a40T9fK9rF%2B5J%2BKywCfCbqxtOvTewHYxHfJQtDWALZXUzjFvFJGYRB%2BPcgQJP3cRPoDpqkB2Dd45J55y%2F2cwdI1a3AExA6O%2BP60wdm4Fg%2FV2%2FPLZSLs5oR3PWIcbb0tANfMpYgCTQjPu8ZZzB9Erxn82E9WysvnzHbRWzNphf%2F32Bc%3D"
 // }
+
+// 响应：Response
+
+// 异步响应
+// const delay = (data, time) => {
+// 	return new Promise( (resolve, reject) => {
+// 		setTimeout(() => {
+// 			resolve(data)
+// 		}, time)
+// 	})
+// }
+// Route.get('/posts', async ({ response }) => {
+// 	// response.send('List of Post~	')
+// 	const data = await delay(
+// 		'List of posts.',
+// 		3000
+// 	)
+// 	return data
+// })
+
+// 重定向：Redirects
+Route.get('/list-of-posts', ({ response }) => {
+	// response.redirect('/posts', true, 301)
+	response.route('list-of-posts')
+})
+
+
+Route.get('/list-of-foot-posts', ({ response }) => {
+	// response.redirect('/posts', true, 301)
+	response.route('list-of-posts', { category: 'food'})
+})
+
+
+Route.get('/posts/:category?', ({ params }) => {
+	return `List of ${ params.category || 'default' } posts.`
+	// return 'List of posts. '
+})
+.as('list-of-posts')
