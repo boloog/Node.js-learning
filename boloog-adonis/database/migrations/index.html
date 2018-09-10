@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var bigdata = [{
+      'id': '154',
+      'name': '类型一',
+      'code': '1001',
+      'parentId': '1',
+      'typeStatus': 0,
+      'remark': '备注',
+      'childList': [{
+        'id': '18184',
+        'name': '类型一子一',
+        'code': '1001001',
+        'parentId': '154',
+        'typeStatus': 0,
+        'remark': '备注',
+        'childList': [{
+          'id': '1818418541',
+          'name': '类型一子一子十六',
+          'code': '1001001016',
+          'parentId': '18184',
+          'typeStatus': 1,
+          'remark': '备注',
+          'childList': []
+        }]
+      }]
+    }]
+
+    // value
+    // label
+    // console.log(bigdata)
+    let obj = {}
+
+    function aaa(arr) {
+      if (arr instanceof Array) {
+        item.forEach((item, index, array) => {
+          aaa(item)
+        })
+      } else {
+        if (object.prototype.toString.call(arr) == '[object object]') {
+          for (var key in arr) {
+            if (key == 'id') {
+              arr['value'] = arr[key]
+            }
+            if (key == 'name') {
+              arr['label'] = arr[key]
+            }
+          }
+        }
+      }
+    }
+
+    // aaa(bigdata);
+    console.log(bigdata);
+
+
+
+
+    // bigdata.forEach( (item, index, array) => {
+    //    console.log(item instanceof Array)
+    //    if(item instanceof Array){
+    //      item.forEach( ())
+    //    }
+    //   console.log(index)
+    // })
+
+  </script>
+</body>
+
+</html>
